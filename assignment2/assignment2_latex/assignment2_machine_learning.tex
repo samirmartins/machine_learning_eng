@@ -1,0 +1,314 @@
+%===============================================================================
+% Computational Assignment 2 - Machine Learning Applied to Engineering
+% IFAC/SBA template adapted for assignment statement
+%===============================================================================
+\documentclass[a4paper]{ifacconf}
+
+\usepackage{graphicx,amsmath,url}
+\usepackage[round]{natbib}
+
+\usepackage[english]{babel}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{ae}
+\emergencystretch=2em
+
+\begin{document}
+
+\selectlanguage{english}
+
+\begin{frontmatter}
+
+\title{Computational Assignment 2: Modeling, Validation, and Comparison of Machine Learning Models\thanksref{footnoteinfo}}
+
+\thanks[footnoteinfo]{Course Machine Learning Applied to Engineering, Electrical Engineering Program, Federal University of S\~ao Jo\~ao del-Rei.}
+
+\author[First]{Samir Angelo Milani Martins}
+
+\address[First]{Department of Electrical Engineering, Federal University of S\~ao Jo\~ao del-Rei, MG.}
+
+\selectlanguage{english}
+\renewcommand{\abstractname}{{\bf Abstract:~}}
+\begin{abstract}
+This document describes the second computational assignment of the course Machine Learning Applied to Engineering. The assignment requires each group to extend the real-data study developed in the first assignment by formulating a supervised learning problem, implementing at least three classification or regression models, validating them properly, and comparing their performance using quantitative metrics. The emphasis is on reproducibility, methodological rigor, critical interpretation, and engineering relevance.
+
+\end{abstract}
+
+\selectlanguage{english}
+\begin{keyword}
+Machine Learning; classification; regression; model validation; engineering applications.
+
+\end{keyword}
+
+\selectlanguage{english}
+\end{frontmatter}
+
+%===============================================================================
+
+\section{Introduction}
+
+Computational Assignment 1 (T1) aimed to consolidate the initial contents of the course, including Python, reading and organizing real databases, exploratory data analysis, descriptive statistics, visualization, correlation, probability, and conceptual discussion about machine learning. In it, students gained familiarity with tools such as: i) conda environment management; ii) GitHub use; iii) library installation and management.
+
+Computational Assignment 2 (T2) directly continues this process. Each group shall use the problem, database, analyses, or conclusions obtained in T1 as a starting point to build a supervised machine learning application. The group shall formulate a classification or regression problem, implement at least three distinct models, validate the results in a technically adequate way, and critically discuss the performance obtained. The models shall be compared \textbf{quantitatively}, through a minimum of three distinct metrics.
+
+This assignment corresponds to the stage of implementing and comparing machine learning techniques, with emphasis on classification, regression, use of libraries such as Scikit-Learn and SysIdentPy, as well as interpretation of results in an Engineering context.
+
+\section{Objectives}
+
+The general objective of T2 is to develop a complete computational study of supervised learning from the data and results obtained in T1.
+
+The specific objectives are:
+\begin{itemize}
+    \item formulate a classification or regression problem from the topic studied in T1;
+    \item clearly define input variables, target variable, and modeling hypothesis;
+    \item prepare the data for modeling, including treatment, transformation, and adequate splitting of the training and test sets (or training, validation, and test);
+    \item implement at least three different machine learning models;
+    \item evaluate the models through metrics adequate to the problem type;
+    \item quantitatively and qualitatively compare the obtained results;
+    \item discuss overfitting, underfitting, bias, variance, data limitations, and applicability in Engineering;
+    \item produce a technical paper in the format of this template.
+\end{itemize}
+
+
+\section{Problem Definition}
+
+Each group shall choose a supervised learning formulation associated with its own T1. The choice between classification and regression is free, as long as it is technically justified.
+
+The group shall make explicit:
+\begin{itemize}
+    \item what the chosen problem is;
+    \item why it is relevant;
+    \item what the target variable is;
+    \item which variables will be used as inputs, and for which reasons they were chosen;
+    \item whether the problem is classification or regression;
+    \item which limitations of the database may affect modeling.
+\end{itemize}
+
+A T2 disconnected from T1 will not be accepted, except upon formal justification and prior approval by the professor.
+
+\section{Data and Preprocessing}
+
+The dataset used in T2 shall be derived from the database analyzed in T1. The group may complement, reorganize, or correct the data, as long as it clearly documents all changes.
+
+The paper and the notebook shall contain:
+\begin{itemize}
+    \item description of the origin of the database;
+    \item summary of the main conclusions of T1 that motivated T2;
+    \item description of the variables used;
+    \item treatment of missing, inconsistent, or duplicated values;
+    \item variable transformation, normalization, standardization, or encoding, when necessary;
+    \item separation between input variables and target variable;
+    \item analysis of possible class imbalance, when the problem is classification.
+\end{itemize}
+
+
+\section{Data Splitting}
+
+The group shall split the data in a way compatible with the problem. The adopted strategy must be justified in the paper.
+
+For databases without explicit temporal dependence, it is recommended to reserve a minimum of 30\% of the data for testing, preferably with cross-validation on the training set.
+
+For time series, the split must respect the chronological order of the data. In this case, the group must not shuffle samples so that future information is used to predict the past. It is recommended to separate the oldest data for training and the most recent for testing.
+
+In classification problems with imbalanced classes, the split must preserve, whenever possible, the proportion between classes.
+
+\section{Mandatory Models}
+
+Each group shall implement and compare at least three distinct models. The models must be adequate to the chosen problem type.
+
+For classification problems, examples are:
+\begin{itemize}
+    \item K-Nearest Neighbors;
+    \item logistic regression;
+    \item Support Vector Machine;
+    \item decision tree;
+    \item random forest;
+    \item gradient boosting or similar methods.
+\end{itemize}
+
+For regression problems, examples are:
+\begin{itemize}
+    \item linear regression;
+    \item Ridge or Lasso regression;
+    \item K-Nearest Neighbors Regressor;
+    \item Support Vector Regression;
+    \item regression tree;
+    \item random forest for regression;
+    \item system identification models with SysIdentPy, when pertinent.
+\end{itemize}
+
+The use of more advanced models is allowed, but does not replace the need to adequately explain the methodology, the chosen parameters, and the limitations of the model. The main objective is to compare models correctly and \textbf{interpret the results with technical maturity}.
+
+\section{Evaluation Metrics}
+
+The metrics must be chosen according to the problem type.
+
+\subsection{Classification}
+
+For classification problems, the group may present:
+\begin{itemize}
+    \item confusion matrix;
+    \item accuracy;
+    \item precision;
+    \item \textit{recall};
+    \item F1-score;
+    \item ROC-AUC or other metrics.
+\end{itemize}
+
+In problems with imbalanced classes, the group shall discuss why accuracy alone may be insufficient.
+
+\subsection{Regression}
+
+For regression problems, the group may present:
+\begin{itemize}
+    \item mean absolute error (MAE);
+    \item mean squared error (MSE) or root mean squared error (RMSE);
+    \item coefficient of determination ($R^2$);
+    \item plot of predicted versus true values;
+    \item graphical residual analysis;
+    \item correlation and autocorrelation analysis of residuals;
+    \item other metrics.
+\end{itemize}
+
+Errors must be interpreted in the physical unit of the problem whenever possible. For example, errors in power, voltage, price, temperature, glucose, demand, or another variable must be discussed in practical terms.
+
+\section{Expected Results}
+
+The paper shall present a clear comparison between the models. It is recommended to include a table with the main metrics, according to the problem type. A generic example is presented in Table~\ref{tab:models}.
+
+\begin{table}[hb]
+\begin{center}
+\caption{Example of comparative table of models.}\label{tab:models}
+\begin{tabular}{lccc}
+Model & Metric 1 & Metric 2 & Metric 3 \\\hline
+Model A & -- & -- & -- \\
+Model B & -- & -- & -- \\
+Model C & -- & -- & -- \\\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+Besides the table, the group shall present graphs that help interpret the results. Examples are:
+\begin{itemize}
+    \item confusion matrix;
+    \item ROC curve or precision-recall curve;
+    \item bar chart comparing metrics;
+    \item prediction versus true value plot;
+    \item residual plot;
+    \item variable importance;
+    \item learning curves;
+    \item temporal comparison between true and estimated values.
+\end{itemize}
+
+All graphs must have a title, legend, identified axes, and interpretation in the text. Graphs without analysis will not be considered sufficient evidence.
+
+Discussions are mandatory and \textbf{must go beyond presenting numbers}. The group shall analyze:
+\begin{itemize}
+    \item which model presented the best performance and why;
+    \item whether there are signs of overfitting or underfitting;
+    \item how the bias-variance dilemma appears in the problem;
+    \item how preprocessing influenced the results;
+    \item which variables seem most relevant;
+    \item which limitations of the database affect the reliability of the model;
+    \item whether the results are coherent with the physical, electrical, clinical, energy, or operational phenomenon studied;
+    \item which precautions would be necessary to use the model in a real application.
+\end{itemize}
+
+\textbf{IMPORTANT:} when performance is low, the group must not hide the result. It must technically discuss possible causes, such as small database, noise, uninformative variables, imbalanced classes, poor formulation of the target variable, or limitations of the tested models.
+
+\section{Paper Structure}
+
+The final report shall be delivered as a scientific paper, using this two-column template. The recommended structure is:
+
+\begin{enumerate}
+    \item Introduction;
+    \item Preliminary Concepts; 
+    \item Methodology;
+    \item Results;
+    \item Conclusions;
+    \item Bibliographic References.     
+\end{enumerate}
+
+The paper must have between 10 and 15 bibliographic references, of which at least 5 must be scientific papers published from 2024 onward. It must also have between 6 and 8 pages, containing figures, images, and comparative tables. An acknowledgments section is optional. Figures and tables must be numbered and cited in the text.
+
+Exceptionally well-executed assignments, with original contribution, good technical quality, authorization from all authors, and approval by the professor, may later be adapted for submission to scientific repositories, journals, or academic events.
+
+\section{How to Cite References}
+
+Bibliographic references must be inserted in the project \texttt{.bib} file and cited throughout the text using \LaTeX commands. It is not enough to list references at the end of the paper: every included reference must be effectively cited at some point in the text.
+
+To cite a reference as part of the sentence, where the author is the subject, use \texttt{\textbackslash cite\{key\}}. For example:
+\begin{verbatim}
+Segundo \cite{pedregosa2011}, ...
+\end{verbatim}
+
+To cite a reference in parentheses, use \texttt{\textbackslash citep\{key\}}. For example:
+\begin{verbatim}
+Scikit-Learn is widely used in 
+machine learning \citep{pedregosa2011}.
+\end{verbatim}
+
+The reference key is the identifier defined in the \texttt{.bib} file. An example of a bibliographic entry is:
+\begin{verbatim}
+@article{pedregosa2011,
+  author  = {Pedregosa, Fabian and others},
+  title   = {Scikit-learn: Machine Learning in Python},
+  journal = {Journal of Machine Learning Research},
+  volume  = {12},
+  pages   = {2825--2830},
+  year    = {2011}
+}
+\end{verbatim}
+
+References must prioritize scientific papers. Internet pages, blogs, videos, and informal materials must be avoided. Databases must also be cited, indicating the original source, authors or responsible institution, year, and access link, when available.
+
+At the end of the assignment, the group must verify that all citations appear correctly in the PDF and that there are no unused references, broken citations, or incomplete bibliographic fields.
+
+
+\section{Notebook and Reproducibility}
+
+Besides the paper, the group shall deliver an organized \texttt{.ipynb} notebook, containing the entire computational flow of the assignment in sequential form. The notebook shall allow the professor to understand and reproduce the results.
+
+\textit{IMPORTANT:} groups shall build the notebook from scratch, and not from the Notebook delivered in T1. Code created for T1 may be reused, if the group needs it. 
+
+The notebook shall contain:
+\begin{itemize}
+    \item group identification;
+    \item link to the GitHub repository for T2;
+    \item database description;
+    \item data loading;
+    \item preprocessing;
+    \item data splitting;
+    \item model training;
+    \item metric computation;
+    \item generation of the figures used in the paper;
+    \item brief Markdown comments explaining the decisions made.
+\end{itemize}
+
+The group shall also deliver an \texttt{environment.yml} file (conda environment used). The repository must contain the data used or clear instructions to obtain it, respecting any size, license, or privacy restrictions.
+
+\section{Use of Artificial Intelligence}
+
+The use of generative artificial intelligence tools is allowed as support, as long as it is done ethically and transparently, \textbf{and the group knows exactly what it is doing, how the techniques work, and can analyze the obtained results}. The group remains responsible for all delivered content, including code, interpretation, results, citations, and conclusions. Generic answers, code not understood by the group, or texts without direct relation to the analyzed data will be penalized.
+
+\section{Additional Information}
+
+\textbf{Delivery date:} 07/02/2026, via Campus Virtual.
+
+\textbf{Presentations:} from 07/03 onward. Each group will have \textbf{20 minutes} to present the assignment, followed by discussions. The presentation must focus on the problem, methodology, models, results, and critical discussion.
+
+\section{Conclusion}
+
+T2 must demonstrate that the group is able to transform an initial exploratory analysis into a supervised machine learning study. The assignment is expected to present a clear problem formulation, implement adequate models, fairly compare results, and critically interpret the conclusions in the Engineering context.
+
+The final result must not be just a set of codes or metrics. It must be a coherent, reproducible, and well-justified technical study, capable of showing the possibilities and limitations of using Machine Learning on real data.
+
+\section*{Acknowledgments}
+
+This section is optional in the groups' paper. If used, it must record technical support, databases, laboratories, teams, or people who contributed to the work.
+
+\nocite{grus2020,muller2016,geron2020,nielsen2021,pedregosa2011,lacerda2020}
+\bibliography{ifacconf}
+
+\end{document}
